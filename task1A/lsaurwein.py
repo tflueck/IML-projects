@@ -44,7 +44,7 @@ def calculate_RMSE(w: np.ndarray, X: np.ndarray, y: np.ndarray) -> float:
     """
     RMSE = 0
     y_i = X.dot(w) # This sould be X.T for the linear model but the dimensions don't match
-    print(y_i)
+    #print(y_i)
     n = np.shape(y)[0]
     for i in range(n):
         RMSE += pow(y[i] - y_i[i], 2)
@@ -91,7 +91,7 @@ if __name__ == "__main__":
     y = data["y"].to_numpy()
     data = data.drop(columns="y")
     # print a few data samples
-    print(data.head())
+    #print(data.head())
 
     X = data.to_numpy()
     # The function calculating the average RMSE
