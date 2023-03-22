@@ -24,7 +24,14 @@ def transform_data(X):
     X_transformed: array of floats: dim = (700,21), transformed input with 21 features
     """
     X_transformed = np.zeros((700, 21))
-    # TODO: Enter your code here
+
+    for i in range(X.shape[0]):
+        X_transformed[i][0:5] = X[i][0:5]
+        X_transformed[i][5:10] = pow(X[i][0:5], 2)
+        X_transformed[i][10:15] = np.exp(X[i][0:5])
+        X_transformed[i][15:20] = np.cos(X[i][0:5])
+        X_transformed[i][20] = 1
+
     assert X_transformed.shape == (700, 21)
     return X_transformed
 
@@ -45,7 +52,9 @@ def fit(X, y):
     """
     w = np.zeros((21,))
     X_transformed = transform_data(X)
-    # TODO: Enter your code here
+
+    w = np.dot(np.linalg.inv(np.dot(X_transformed.T,X_transformed)),(np.dot(X_transformed.T,y)))
+
     assert w.shape == (21,)
     return w
 
